@@ -12,7 +12,7 @@
     </parent>
 
     <groupId>com.cholewinskimichal</groupId>
-    <artifactId>Go Euro Challange</artifactId>
+    <artifactId>GoEuroChallange</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 

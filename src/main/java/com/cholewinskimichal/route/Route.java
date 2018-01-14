@@ -2,11 +2,25 @@ package com.cholewinskimichal.route;
 
 import lombok.Data;
 
-import java.util.Set;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 public class Route {
-    private final int id;
-    private final Set<Stop> stops;
+    private final String id;
+    private final List<Stop> stops;
+
+    public boolean hasStops(String... stopIds) {
+        List<String> ids = stops.stream()
+                .map(Stop::getId)
+                .collect(Collectors.toList());
+        for (String id : stopIds) {
+            if (!ids.contains(id)) {
+                return false;
+            }
+        }
+        return true;
+
+    }
 
 }

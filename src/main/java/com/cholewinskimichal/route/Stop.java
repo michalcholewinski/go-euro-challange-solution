@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public class Stop {
-    private final int id;
+    private final String id;
 }

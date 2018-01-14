@@ -15,6 +15,6 @@ public class RouteController {
 
     @GetMapping
     public RouteResponse isDirect(@RequestParam("dep_sid") int depSid, @RequestParam("arr_sid") int arrSid) {
-        return routeService.isDirectRoutePresent(depSid,arrSid);
+        return routeService.isDirectRoutePresent(depSid, arrSid);
     }
 }
