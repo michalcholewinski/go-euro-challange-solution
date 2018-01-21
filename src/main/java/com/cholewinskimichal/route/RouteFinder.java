@@ -1,9 +1,13 @@
 package com.cholewinskimichal.route;
 
-import org.springframework.stereotype.Component;
+import com.cholewinskimichal.config.AppConfig;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -11,22 +15,20 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Component
+@Service
 public class RouteFinder {
 
-    public static final String DATA_FILE_NAME = "example";
-    public static final String DATA_DIR = "data";
+    @Autowired
+    private AppConfig config;
+
     public static final String STOP_ID_SEPARATOR = " ";
     public static final int LINE_ID_INDEX = 0;
     private final Set<Route> routes = new HashSet<>();
 
-
-    public RouteFinder() throws IOException {
-        loadRoutes();
-    }
-
-    private void loadRoutes() throws IOException {
-        List<String> lines = Files.lines(Paths.get(DATA_DIR, DATA_FILE_NAME)).collect(Collectors.toList());
+    @PostConstruct
+    public void loadRoutes() throws IOException {
+        Path path = Paths.get(config.getFilepath());
+        List<String> lines = Files.lines(path).collect(Collectors.toList());
 
         int lineCounter = 0;
         for (String line : lines) {
@@ -39,12 +41,12 @@ public class RouteFinder {
     }
 
     private Route buildBusLine(String[] stopsArray) {
-        List<Stop> stops=new ArrayList<>();
-        String routeId=null;
+        List<Stop> stops = new ArrayList<>();
+        String routeId = null;
         for (int i = 0; i < stopsArray.length; i++) {
             if (i == LINE_ID_INDEX) {
-                routeId=stopsArray[i];
-            }else{
+                routeId = stopsArray[i];
+            } else {
                 stops.add(new Stop(stopsArray[i]));
             }
         }

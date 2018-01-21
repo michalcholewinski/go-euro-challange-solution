@@ -1,2 +1,1 @@
-flyway:
-  enabled: false
+filepath: src/test/resources/data/test
