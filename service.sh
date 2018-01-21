@@ -9,7 +9,7 @@ dev_build() {
 }
 
 dev_run() {
-  java -jar target/GoEuroChallenge-0.0.1-SNAPSHOT.jar
+  java -jar target/GoEuroChallenge-0.0.1-SNAPSHOT.jar --filepath=$1
   sleep 600
 }
 
