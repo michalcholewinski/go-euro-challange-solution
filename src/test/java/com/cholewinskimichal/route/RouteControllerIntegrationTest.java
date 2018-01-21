@@ -2,8 +2,6 @@ package com.cholewinskimichal.route;
 
 
 import com.cholewinskimichal.BusRouteChallengeApp;
-import com.cholewinskimichal.config.AppConfig;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,16 +42,6 @@ public class RouteControllerIntegrationTest {
 
     @Autowired
     private MockMvc mvc;
-
-    @Autowired
-    private AppConfig appConfig;
-
-
-    @Before
-    public void setUp() throws IOException {
-        createTestfile();
-    }
-
 
     @Test
     public void shouldFindAnyDirectRoute() throws Exception {
